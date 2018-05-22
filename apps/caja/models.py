@@ -11,13 +11,13 @@ class Clientes(models.Model):
 class Cobros(models.Model):
     Id = models.AutoField(primary_key=True)    
     #UsuarioId
-    ClienteId = models.ForeingKey('Clientes', null=False, blank=False)
+    ClienteId = models.ForeignKey('Clientes', null=False, blank=False)
     MontoTotal = models.FloatField(null=False, blank=False)
     Estado = models.CharField(max_length=1, null=False, blank=False)
 
 class DetalleCobros(models.Model):
     Id = models.AutoField(primary_key=True)   
-    PedidoId = models.ForeingKey('Pedidos', null=False, blank=False)
-    VisitaId = models.ForeingKey('Visitas', null=False, blank=False)
-    CobroId = models.ForeingKey('Cobros', null=False, blank=False)
+    PedidoId = models.ForeignKey(Pedidos, null=False, blank=False)
+    VisitaId = models.ForeignKey(Visitas, null=False, blank=False)
+    CobroId = models.ForeignKey('Cobros', null=False, blank=False)
     Estado = models.CharField(max_length=1, null=False, blank=False)
