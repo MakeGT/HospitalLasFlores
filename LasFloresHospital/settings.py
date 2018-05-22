@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'LasFloresHospital.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'PruebaLasFLores',
+        'NAME': 'PruebaLasFlores',
         'USER': 'postgres',
         'PASSWORD': 'admin',
         'HOST': 'localhost',
