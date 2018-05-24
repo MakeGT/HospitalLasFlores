@@ -1,0 +1,30 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+  Listado de productos
+{% endblock %}
+
+{% block content %}
+  {% for producto in Productos %}
+    <li><tr>
+      <td>
+        {{producto.Codigo}}
+      </td>
+      <td>
+        {{producto.Nombre}}
+      </td>
+      <td>
+          {{producto.Marca}}
+      </td>
+      <td>
+          {{producto.Unidad}}
+      </td>
+      <td>
+          {{producto.Cantidad}}
+      </td>
+      <td>
+        {{producto.Existencia}}
+      </td>
+    </tr></li>
+  {% endfor %}
+{% endblock %}

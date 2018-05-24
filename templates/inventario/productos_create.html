@@ -1,0 +1,16 @@
+{% extends 'base/base.html' %}
+{% block title %}
+     Creación de productos
+{% endblock %}
+     
+{% block content %}
+     <form class"" action="" method="POST">
+        {% csrf_token %}
+        <li><h4>Nombre del prducto {{form.Nombre}}</h4></li>
+        <li><h4>Codigo {{form.Codigo}}</h4></li>
+        <li><h4>Marca {{form.Marca}}</h4></li>
+        <li><h4>Presentación {{form.Unidad}}</h4></li>
+        <li><h4>Cantidad de la caja {{form.Cantidad}}</h4></li>
+        <button type="submit"> Guardar </button>
+    </form>
+{% endblock %}
