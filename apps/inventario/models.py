@@ -15,11 +15,12 @@ class Productos(models.Model):
     Cantidad = models.IntegerField(null=True)
     #Cantidad hace referencia a cúantos elementos contiene, por ejemplo una caja
     Existencia = models.IntegerField()
-def publish(self):
-    self.save()
 
-def __str__(self):
-    return self.Nombre
+    def publish(self):
+        self.save()
+
+    def __str__(self):
+        return self.Nombre
 
 
 class Proveedores(models.Model):
@@ -32,11 +33,11 @@ class Lotes(models.Model):
     Id = models.AutoField(primary_key=True)
     PrecioVenta = models.FloatField()
     ProductoId = models.ForeignKey('Productos', null=False, blank=False)
-def publish(self):
-    self.save()
+    def publish(self):
+        self.save()
 
-def __str__(self):
-    return self.Id
+    def __str__(self):
+        return self.Id
 
 class Compras(models.Model): #Compras a proveedor
     Id = models.AutoField(primary_key=True)
