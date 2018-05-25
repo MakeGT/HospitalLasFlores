@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'apps.caja',
     'apps.consultas',
     'apps.inventario',
-    'apps.pacientes'
+    'apps.pacientes',
+    'apps.usuarios'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -129,14 +130,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-#LOGIN_REDIRECT_URL = reverse_lazy(index)
-#LOGOUT_REDIRECT_URL = reverse_lazy('login')
+LOGIN_REDIRECT_URL = reverse_lazy('listar_producto')
+LOGOUT_REDIRECT_URL = reverse_lazy('login')
 
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'emaxrecuperar@gmail.com'
-EMAIL_HOST_PASSWORD = 'emax123456789'
+EMAIL_HOST_USER = 'hospitallasfloreshuehuetenango@gmail.com'
+EMAIL_HOST_PASSWORD = 'hospitalhuehue'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
