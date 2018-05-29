@@ -1,31 +1,21 @@
-{% load staticfiles %}
-
 <!DOCTYPE html>
 <html lang="es">
     <head>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <meta charset="utf-8">
         <title>
             {% block title %}
                 Título del archivo base
             {% endblock %}
         </title>
-        <link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
-        <link href="{% static "bootstrap/css/local.min.css" %}" rel="stylesheet">
-
-        {% block head %}
-        {% endblock %}
     </head>
-
     <body>
         {% block content %}
            contenido del archivo base
         {% endblock %}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
-
-        {% block scripts %}
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        	<script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
-        {% endblock %}
+       
     </body>
+    
 </html>
