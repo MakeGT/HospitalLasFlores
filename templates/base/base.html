@@ -12,14 +12,14 @@
 
         
     </head>
-    <body>
+    
+    <body  {text-align: center}>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">Las Flores</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
-          
-            <div class="collapse navbar-collapse" id="navbarColor03">
+            <div class="collapse navbar-collapse" id="navbarColor03" align="right">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                   <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
@@ -40,8 +40,11 @@
               </form>
             </div>
           </nav>
+          
         {% block content %}
+        <STYLE type="text/css">
            
+        </STYLE>
         {% endblock %}
 
         <script src="{% static 'js/jquery.min.js' %}"></script>
@@ -49,5 +52,7 @@
         <script src="{% static 'js/popper.min.js' %}"></script>
        
     </body>
+    
+ 
     
 </html>

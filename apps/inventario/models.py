@@ -14,7 +14,7 @@ class Productos(models.Model):
     Unidad = models.CharField(max_length=1, choices=Unidades, default='1')
     Cantidad = models.IntegerField(null=True)
     #Cantidad hace referencia a cúantos elementos contiene, por ejemplo una caja
-    Existencia = models.IntegerField()
+    Existencia = models.IntegerField(default=0)
 
     def publish(self):
         self.save()
