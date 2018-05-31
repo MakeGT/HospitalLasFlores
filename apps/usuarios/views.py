@@ -16,6 +16,7 @@ class RegistroUsuario(CreateView):
 class UsuariosListView(ListView):
     model = User
     template_name = 'usuarios/usuarios_list.html'
+    form_class = 
     context_object_name ='users'
 
     def __str__(self):
