@@ -7,11 +7,34 @@
     
      <form class"" action="" method="POST" autocomplete="off">
         {% csrf_token %}
-        <br><h4>Nombre del prducto {{form.Nombre}}</h4></br>
-        <br><h4>Codigo {{form.Codigo}}</h4></br>
-        <br><h4>Marca {{form.Marca}}</h4></br>
-        <br><h4>Presentación {{form.Unidad}}</h4></br>
-        <br><h4>Cantidad de la caja {{form.Cantidad}}</h4></br>
-        <button type="button" class="btn btn-success">Agregar</button>
+        <p>
+        <table align="center">
+                <th></th>
+            <tr>
+            <tr >
+                <td align="right"><h4>Nombre del producto:</h4></td> <td>{{form.Nombre}}</h4></td>
+            </tr>
+            <tr>
+                <td align="right"><h4>Código:</h4></td> <td>{{form.Codigo}}</h4></td>
+            </tr>
+            <tr>
+                <td align="right"><h4>Marca:</h4></td> <td>{{form.Marca}}</h4></td>
+            </tr>
+            
+            <tr>
+                <td align="right"><h4>Presentación:</h4></td> <td>{{form.Unidad}}</h4></td>
+             </tr>
+        
+            <tr>
+                <td align="right"><h4>Cantidad de la caja:</h4></td> <td>{{form.Cantidad}}</h4></td>
+            </tr>
+                 
+            <td>
+                <td align="center"> 
+                    <button type="submit" class="btn btn-success">Agregar</button>
+                </td>
+        </tr>
+        </table>
+    </p>
     </form>
 {% endblock %}
