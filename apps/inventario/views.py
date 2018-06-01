@@ -48,5 +48,19 @@ class ProductoUpdateView(UpdateView):
         'Existencia'
     ]
 
-    template_name = 'productos/productos_create.html'
-    success_url = reverse_lazy('productos_lista')
+    template_name = 'inventario/productos_create.html'
+    success_url = reverse_lazy('listar_producto')
+
+class ProductoDeleteView(DeleteView):
+    model = Productos
+    fields = [
+        'Codigo',
+        'Nombre',
+        'Marca',
+        'Unidad',
+        'Cantidad',
+        'Existencia'
+    ]
+
+    template_name = 'inventario/productos_delete.html'
+    success_url = reverse_lazy('listar_producto')
