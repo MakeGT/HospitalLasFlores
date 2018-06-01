@@ -5,26 +5,31 @@
 {% endblock %}
 
 {% block content %}
-  {% for producto in Productos %}
-    <li><tr>
-      <td>
-        {{producto.Codigo}}
-      </td>
-      <td>
-        {{producto.Nombre}}
-      </td>
-      <td>
-          {{producto.Marca}}
-      </td>
-      <td>
-          {{producto.Unidad}}
-      </td>
-      <td>
-          {{producto.Cantidad}}
-      </td>
-      <td>
-        {{producto.Existencia}}
-      </td>
-    </tr></li>
-  {% endfor %}
-{% endblock %}
+  
+  <p>
+      <table class = "table table-hover" align="center">
+          <th scope = "col"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> CÓDIGO </font> </font> </th>
+          <th scope = "col"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> NOMBRE </font> </font> </th>
+          <th scope = "col"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> MARCA </font> </font> </th>
+          <th scope = "col"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> UNIDAD </font> </font> </th>
+          <th scope = "col"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> CANTIDAD </font> </font> </th>
+          <th scope = "col"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> EXISTENCIA</font> </font> </th>
+          <th></th>
+          <th></th>
+      {% for producto in Productos %}
+          <tr >
+              <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> {{producto.Codigo}} </font> </font> </td>
+              <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> {{producto.Nombre}} </font> </font> </td>
+              <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> {{producto.Marca}} </font> </font> </td>
+              <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> {{producto.Unidad}} </font> </font> </td>
+              <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> {{producto.Cantidad}} </font> </font> </td>
+              <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> {{producto.Existencia}} </font> </font> </td>
+              <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> 
+                <a class="btn btn-outline-warning" href="#">Editar</a> 
+                <a class="btn btn-outline-danger" href="#">Eliminar</a> </font> </font> </td>
+          </tr>
+      {% endfor %}
+      </table>
+  </p>
+  
+  {% endblock %}

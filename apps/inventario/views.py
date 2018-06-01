@@ -27,7 +27,7 @@ class ProductoCreateView(CreateView):
         'Existencia'
     ]
     template_name = 'inventario/productos_create.html'
-    #success_url = reverse_lazy('productos_lista')
+    success_url = reverse_lazy('listar_producto')
 
 class ProductoListView(ListView):
     model = Productos

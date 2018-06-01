@@ -1,0 +1,17 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+  Listado de Usuarios
+{% endblock %}
+
+{% block content %}
+  {% for producto in Productos %}
+    <li><tr>
+      
+      <td>
+        {{producto.user}}
+      </td>
+     
+    </tr></li>
+  {% endfor %}
+{% endblock %}
