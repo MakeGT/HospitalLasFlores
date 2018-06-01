@@ -1,4 +1,5 @@
-{ % extends base/base.html% }
+{% extends 'base/base.html' %}
+
 {% block title %}
   Eliminación de producto
 {% endblock %}
@@ -8,6 +9,6 @@
     {% csrf_token %}
       <h3>¿Desea eliminar el registro de {{ object.nombre }}?</h3>
       <button class="btn btn-danger" type="submit">Confirmar</button>
-     <!-- <a class= "btn btn-default" href="{% url 'casos:caso_lista' %}">Cancelar</a>  -->
+      <a class= "btn btn-default" href="{% url 'listar_producto' %}">Cancelar</a>
   </form>
 {% endblock %}
