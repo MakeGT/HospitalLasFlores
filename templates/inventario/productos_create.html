@@ -1,57 +1,56 @@
 {% extends 'base/base.html' %}
+{% load widget_tweaks %}
 {% block title %}
      Creación de productos
 {% endblock %}
      
 {% block content %}
-<form class="" action="" method="post" autocomplete="off">
-        {% csrf_token %}
-        <table align="center">
-        <div class="form-group">
-          <tr>
-              <td align="right"><label class="control-label" >Código: </label></td> 
-              <td><input id="id_codigo" name="Codigo" type="text" class="form-control"></td>  
-          </tr>
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">
+                Edicion de Productos
+            </h4>
         </div>
-        <div class="form-group">
-            <tr>
-                <td align="right"><label class="control-label">Nombre:  </label></td> 
-                <td><input id="id_nombre" name="Nombre" type="text" class="form-control"></td>  
-            </tr>
+        <div class="card-body">
+            <form action="" method="post" class="">
+                {% csrf_token %}
+                <div class="row form-group justify-content-md-center">
+                    <div class="col-md-2 text-right"><label for="{{form.Codigo.auto_id}}">Código</label></div>
+                    <div class="col-md-3 text-left">
+                        {{form.Codigo | add_class:"form-control"}}
+                    </div>
+                </div>
+                <div class="row form-group justify-content-md-center">
+                    <div class="col-md-2 text-right"><label for="{{form.Nombre.auto_id}}">Nombre</label></div>
+                    <div class="col-md-3 text-left">
+                        {{form.Nombre | add_class:"form-control"}}
+                    </div>
+                </div>
+                <div class="row form-group justify-content-md-center">
+                    <div class="col-md-2 text-right"><label for="{{form.Marca.auto_id}}">Marca</label></div>
+                    <div class="col-md-3 text-left">
+                        {{form.Marca | add_class:"form-control"}}
+                    </div>
+                </div>
+                <div class="row form-group justify-content-md-center">
+                    <div class="col-md-2 text-right"><label for="{{form.Unidad.auto_id}}">Unidad</label></div>
+                    <div class="col-md-3 text-left">
+                        {{form.Unidad | add_class:"form-control"}}
+                    </div>
+                </div>
+                <div class="row form-group justify-content-md-center">
+                    <div class="col-md-2 text-right"><label for="{{form.Cantidad.auto_id}}">Cantidad</label></div>
+                    <div class="col-md-3 text-left">
+                        {{form.Cantidad | add_class:"form-control"}}
+                    </div>
+                </div>
+                <div class="row form-group justify-content-md-center">
+                    <div class="col-md-5 text-right">
+                        <button type="submit" name="guardar" class="btn btn-success btn-lg"><i class="far fa-save fa-lg"></i></button>
+                        <a href="{% url 'listar_producto' %}" class="btn btn-danger btn-lg"><b><i class="fa fa-times fa-lg"></i></b></a>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div class="form-group">
-            <tr>
-                <td align="right"><label class="control-label">Marca: </label></td> 
-                <td><input id="id_marca" name="Marca" type="text" class="form-control"></td>  
-            </tr>
-        </div>
-        <div class="form-group">
-            <tr>
-                <td align="right"><label class="control-label">Unidad:  </label></td> 
-                <td><select id="id_unidad" name="Unidad" >
-                    <option value="1">Caja</option>
-                    <option value="2">Por Unidad</option>
-                  </select></td>  
-            </tr>
-        </div>
-        <div class="form-group">
-            <tr>
-                <td align="right"><label class="control-label">Cantidad:  </label></td> 
-                <td><input id="id_cantidad" name="Cantidad" type="text" class="form-control"></td>  
-            </tr>
-        </div>
-        <div class="form-group">
-            <tr>
-                <td align="right"><label class="control-label">Existencia:  </label></td> 
-                <td><input id="id_existencia" name="Existencia" type="text" class="form-control"></td>  
-            </tr>
-        </div>
-        <tr>
-          <td></td>
-          <td align="center"><button type="submit" class="btn btn-outline-success">Guardar</button></td>
-            
-        </tr>
-        
-    </table>
-        </form>
-        {% endblock %}
+    </div>
+{% endblock %}
