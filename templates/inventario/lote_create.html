@@ -1,0 +1,45 @@
+{% extends 'base/base.html' %}
+
+{% load widget_tweaks %}
+{% block title %}
+     Creación de productos
+{% endblock %}
+     
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">
+                Edicion de Lotes
+            </h4>
+        </div>
+        <div class="card-body">
+            <form action="" method="post" class="">
+                {% csrf_token %}
+                <div class="row form-group justify-content-md-center">
+                    <div class="col-md-2 text-right"><label for="{{form.PrecioVenta.auto_id}}">Precio de Venta</label></div>
+                    <div class="col-md-3 text-left">
+                        {{form.PrecioVenta | add_class:"form-control"}}
+                    </div>
+                </div>
+                <div class="row form-group justify-content-md-center">
+                    <div class="col-md-2 text-right"><label for="{{form.ProductoId.auto_id}}">Producto</label></div>
+                    <div class="col-md-3 text-left">
+                        {{form.ProductoId | add_class:"form-control"}}
+                    </div>
+                </div>
+                <div class="row form-group justify-content-md-center">
+                    <div class="col-md-2 text-right"><label for="{{form.Cantidad.auto_id}}">Cantidad</label></div>
+                    <div class="col-md-3 text-left">
+                        {{form.Cantidad | add_class:"form-control"}}
+                    </div>
+                </div>
+                <div class="row form-group justify-content-md-center">
+                    <div class="col-md-5 text-right">
+                        <button type="submit" name="guardar" class="btn btn-success btn-lg"><i class="far fa-save fa-lg"></i></button>
+                        <a href="{% url 'listar_producto' %}" class="btn btn-danger btn-lg"><b><i class="fa fa-times fa-lg"></i></b></a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

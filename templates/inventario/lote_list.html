@@ -1,0 +1,51 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+  Listado de Lotes
+{% endblock %}
+
+{% block content %}
+    
+    <h3>Listado de lotes <a href="{% url 'agregar_lote' %}" class="btn btn-success"> <i class="fa fa-plus"></i> </a></h3>
+    
+    <div class="form-group">
+        <input type="text" class="form-control pull-right" style="width:20%" id="search" placeholder="Buscar"> 
+    </div>
+  <p>
+      <table class = "table table-hover text-center" id="mytable">
+        <thead>
+        <tr role="row">
+          <th scope = "col">PRECIO DE VENTA</th>
+          <th scope = "col">PRODUCTO</th>
+          <th scope = "col">CANTIDAD</th>
+          <th></th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+      {% for lote in Lotes %}
+        
+          <tr class="text-center">
+              <td> {{lote.PrecioVenta}} </td>
+              <td> {{lote.ProductoId}}   </td>
+              <td> {{lote.Cantidad}}   </td>
+              <td>   
+                <div class="btn-group">
+                    <a class="btn btn-outline-info" href="{% url 'editar_lote' lote.Id %}"> <i class="far fa-edit"></i> Editar</a> 
+                    <a class="btn btn-outline-danger" href="{% url 'eliminar_lote' lote.Id %}"><i class="fas fa-trash"></i></a>   </td>
+                </div>
+          </tr>
+        
+      {% endfor %}
+        </tbody>  
+      </table>
+  </p>
+  
+  
+  {% endblock %}
+
+{% block body %}
+    <script src="{% static 'js/search.js' %}"></script>
+        
+{% endblock %}
