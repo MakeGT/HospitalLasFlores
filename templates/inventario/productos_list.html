@@ -1,35 +1,57 @@
 {% extends 'base/base.html' %}
+{% load staticfiles %}
 
 {% block title %}
   Listado de productos
 {% endblock %}
 
 {% block content %}
-  
+    
+    <h3>Listado de Productos <a href="{% url 'agregar_producto' %}" class="btn btn-success"> <i class="fa fa-plus"></i> </a></h3>
+    
+    <div class="form-group">
+        <input type="text" class="form-control pull-right" style="width:20%" id="search" placeholder="Buscar"> 
+    </div>
   <p>
-      <table class = "table table-hover" align="center">
-          <th scope = "col"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> CÓDIGO </font> </font> </th>
-          <th scope = "col"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> NOMBRE </font> </font> </th>
-          <th scope = "col"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> MARCA </font> </font> </th>
-          <th scope = "col"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> UNIDAD </font> </font> </th>
-          <th scope = "col"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> CANTIDAD </font> </font> </th>
-          <th scope = "col"> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> EXISTENCIA</font> </font> </th>
+      <table class = "table table-hover text-center" id="mytable">
+        <thead>
+        <tr role="row">
+          <th scope = "col">CÓDIGO</th>
+          <th scope = "col">NOMBRE</th>
+          <th scope = "col">MARCA</th>
+          <th scope = "col">UNIDAD</th>
+          <th scope = "col">CANTIDAD</th>
+          <th scope = "col">EXISTENCIA</th>
           <th></th>
           <th></th>
+        </tr>
+        </thead>
+        <tbody>
       {% for producto in Productos %}
-          <tr >
-              <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> {{producto.Codigo}} </font> </font> </td>
-              <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> {{producto.Nombre}} </font> </font> </td>
-              <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> {{producto.Marca}} </font> </font> </td>
-              <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> {{producto.Unidad}} </font> </font> </td>
-              <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> {{producto.Cantidad}} </font> </font> </td>
-              <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> {{producto.Existencia}} </font> </font> </td>
-              <td> <font style = "vertical-align: inherit;"> <font style = "vertical-align: inherit;"> 
-                <a class="btn btn-outline-warning" href="{% url 'editar_producto' producto.Id %}">Editar</a> 
-                <a class="btn btn-outline-danger" href="{% url 'eliminar_producto' producto.Id %}">Eliminar</a> </font> </font> </td>
+        
+          <tr class="text-center">
+              <td> {{producto.Codigo}} </td>
+              <td> {{producto.Nombre}}   </td>
+              <td> {{producto.Marca}}   </td>
+              <td> {{producto.get_Unidad_display}}   </td>
+              <td> {{producto.Cantidad}}   </td>
+              <td> {% if producto.Existencia %}{{producto.Existencia}}{% endif %}   </td>
+              <td>   
+                <div class="btn-group">
+                    <a class="btn btn-outline-info" href="{% url 'editar_producto' producto.Id %}"> <i class="far fa-edit"></i> Editar</a> 
+                    <a class="btn btn-outline-danger" href="{% url 'eliminar_producto' producto.Id %}"><i class="fas fa-trash"></i></a>   </td>
+                </div>
           </tr>
+        
       {% endfor %}
+        </tbody>  
       </table>
   </p>
   
+  
   {% endblock %}
+
+{% block body %}
+    <script src="{% static 'js/search.js' %}"></script>
+        
+{% endblock %}

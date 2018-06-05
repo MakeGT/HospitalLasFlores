@@ -24,7 +24,6 @@ class ProductoCreateView(CreateView):
         'Marca',
         'Unidad',
         'Cantidad',
-        'Existencia'
     ]
     template_name = 'inventario/productos_create.html'
     success_url = reverse_lazy('listar_producto')
@@ -44,8 +43,7 @@ class ProductoUpdateView(UpdateView):
         'Nombre',
         'Marca',
         'Unidad',
-        'Cantidad',
-        'Existencia'
+        'Cantidad'
     ]
 
     template_name = 'inventario/productos_create.html'
@@ -53,14 +51,40 @@ class ProductoUpdateView(UpdateView):
 
 class ProductoDeleteView(DeleteView):
     model = Productos
-    fields = [
-        'Codigo',
-        'Nombre',
-        'Marca',
-        'Unidad',
-        'Cantidad',
-        'Existencia'
-    ]
 
     template_name = 'inventario/productos_delete.html'
     success_url = reverse_lazy('listar_producto')
+
+class LoteCreateView(CreateView):
+    model = Lotes
+    fields = [
+        'PrecioVenta',
+        'ProductoId',
+        'Cantidad'
+    ]
+    template_name = 'inventario/lote_create.html'
+    success_url = reverse_lazy('listar_lote')
+
+class LoteListView(ListView):
+    model = Lotes
+    template_name = 'inventario/lote_list.html'
+    context_object_name ='Lotes'
+
+    def __str__(self):
+        return self.Nombre
+
+class LoteDeleteView(DeleteView):
+    model = Lotes
+
+    template_name = 'inventario/lote_delete.html'
+    success_url = reverse_lazy('listar_lote')
+
+class LoteUpdateView(UpdateView):
+    model = Lotes
+    fields = [
+        'PrecioVenta',
+        'ProductoId',
+        'Cantidad'
+    ]
+    template_name = 'inventario/lote_create.html'
+    success_url = reverse_lazy('listar_lote')

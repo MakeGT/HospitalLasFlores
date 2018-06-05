@@ -5,10 +5,27 @@
 {% endblock %}
 
 {% block content %}
-  <form method="POST">
-    {% csrf_token %}
-      <h3>¿Desea eliminar el registro de {{ object.nombre }}?</h3>
-      <button class="btn btn-danger" type="submit">Confirmar</button>
-      <a class= "btn btn-default" href="{% url 'listar_producto' %}">Cancelar</a>
-  </form>
+<div class="row justify-content-md-center">
+  <div class="col-md-8">
+    <div class="card card-danger border-danger my-auto">
+      <div class="card-header bg-danger text-white">
+        <b>Confirmar eliminación</b>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">¿Desea eliminar el registro de {{ object }}?</h5>
+      </div>
+      <div class="card-footer">
+        <form method="POST">
+          {% csrf_token %}
+          <div class="form-group row">
+            <div class="col-md-12 text-right">
+              <button class="btn btn-danger" type="submit"><i class="fa fa-trash"></i></button>
+              <a class= "btn btn-secondary" href="{% url 'listar_producto' %}"><i class="fa fa-times"></i></a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

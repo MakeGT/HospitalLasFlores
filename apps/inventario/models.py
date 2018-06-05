@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Sum
 from django.utils import timezone
 
 # Create your models here.
@@ -14,7 +15,10 @@ class Productos(models.Model):
     Unidad = models.CharField(max_length=1, choices=Unidades, default='1')
     Cantidad = models.IntegerField(null=True)
     #Cantidad hace referencia a cúantos elementos contiene, por ejemplo una caja
-    Existencia = models.IntegerField(default=0)
+    
+    @property
+    def Existencia(self):
+        return self.lotes.aggregate(Sum('Cantidad'))['Cantidad__sum']
 
     def publish(self):
         self.save()
@@ -32,7 +36,8 @@ class Proveedores(models.Model):
 class Lotes(models.Model):
     Id = models.AutoField(primary_key=True)
     PrecioVenta = models.FloatField()
-    ProductoId = models.ForeignKey('Productos', null=False, blank=False)
+    ProductoId = models.ForeignKey('Productos', null=False, blank=False, related_name='lotes')
+    Cantidad = models.IntegerField(null=True)
     def publish(self):
         self.save()
 
