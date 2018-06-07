@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^inventario/', include('apps.inventario.urls')),
     url(r'^usuarios/', include('apps.usuarios.urls')),
+    url(r'^principal/', include('apps.principal.urls')),
     url(r'^accounts/login/', login, {'template_name':'usuarios/index.html'}, name = 'login'),
     url(r'^logout/', logout_then_login, name = 'logout'),
     url(r'^reset/password_reset', password_reset, {'template_name':'registro/password_reset_form.html', 
