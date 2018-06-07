@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 
 import os
 from django.core.urlresolvers import reverse_lazy
+from apps.principal.views import index
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -43,7 +44,8 @@ INSTALLED_APPS = [
     'apps.consultas',
     'apps.inventario',
     'apps.pacientes',
-    'apps.usuarios'
+    'apps.usuarios',
+    'apps.principal'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -132,7 +134,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
-LOGIN_REDIRECT_URL = reverse_lazy('listar_producto')
+LOGIN_REDIRECT_URL = reverse_lazy(index)
 LOGOUT_REDIRECT_URL = reverse_lazy('login')
 
 
