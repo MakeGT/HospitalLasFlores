@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import (
     ListView,
-    DateDetailView,
+    DetailView,
     DeleteView,
     UpdateView,
     CreateView,
@@ -54,6 +54,12 @@ class ProductoDeleteView(DeleteView):
 
     template_name = 'inventario/productos_delete.html'
     success_url = reverse_lazy('listar_producto')
+
+class ProductoDetailView(DetailView):
+    model = Productos
+    template_name = 'inventario/producto_detail.html'
+    success_url = reverse_lazy('listar_producto')
+
 
 class LoteCreateView(CreateView):
     model = Lotes
