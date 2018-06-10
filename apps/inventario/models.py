@@ -24,8 +24,7 @@ class Productos(models.Model):
         self.save()
 
     def __str__(self):
-        return self.Nombre
-
+        return '%s %s' % (self.Nombre, self.Marca)
 
 class Proveedores(models.Model):
     Id = models.AutoField(primary_key=True)
