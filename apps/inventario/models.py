@@ -24,7 +24,11 @@ class Productos(models.Model):
         self.save()
 
     def __str__(self):
-        return self.Nombre
+        if self.Unidad == '1':
+            return (self.Nombre + ' (UNIDAD)')
+        else:
+            return (self.Nombre + ' (CAJA DE ) "' + str(self.Cantidad) + '" (UNIDADES)' )
+           # return '%s %s %s' % (self.Nombre, self.Unidad, self.Cantidad)
 
 
 class Proveedores(models.Model):
