@@ -21,10 +21,35 @@
                         {{form.PrecioVenta | add_class:"form-control"}}
                     </div>
                 </div>
-                <div class="row form-group justify-content-md-center">
-                    <div class="col-md-2 text-right"><label>Producto</label></div>
-                    <div class="col-md-3 text-left">
-                        {{form.ProductoId | add_class:"form-control"}}
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class = "table table-hover text-center" id="mytable">
+                            <thead>
+                            <tr role="row">
+                              <th scope = "col">CÓDIGO</th>
+                              <th scope = "col">NOMBRE</th>
+                              <th scope = "col">MARCA</th>
+                              <th scope = "col">UNIDAD</th>
+                              <th scope = "col">CANTIDAD</th>
+                              <th scope = "col">EXISTENCIA</th>
+                              <th></th>
+                              <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="text-center">
+                                    <td> {{producto.Codigo}} </td>
+                                    <td> {{producto.Nombre}}   </td>
+                                    <td> {{producto.Marca}}   </td>
+                                    <td> {{producto.get_Unidad_display}}   </td>
+                                    <td> {{producto.Cantidad}}   </td>
+                                    <td> {% if producto.Existencia %}{{producto.Existencia}}{% endif %}   </td>
+                                    <td>   
+                                        <div class="btn-group">
+                                             <i class="fa fa-info"></i>
+                                        </div>
+                                      </td>
+                                </tr>
                     </div>
                 </div>
                 <div class="row form-group justify-content-md-center">
@@ -42,4 +67,19 @@
             </form>
         </div>
     </div>
+{% endblock %}
+
+{% block js %}
+<script>
+    $(document).ready(function(){
+        let producto_id = location.href.split("?")[1];
+
+        if(producto_id.includes('producto_id')){
+            producto_id = producto_id.split('=')[1];
+            $('#{{form.ProductoId.auto_id}}>option[value='+producto_id+']')
+                .attr('selected', true);
+        }
+
+    });
+</script>
 {% endblock %}
