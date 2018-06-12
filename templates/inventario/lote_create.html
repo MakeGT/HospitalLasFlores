@@ -22,9 +22,9 @@
                     </div>
                 </div>
                 <div class="row form-group justify-content-md-center">
-                    <div class="col-md-2 text-right"><label>Producto</label></div>
+                    <div class="col-md-2 text-right"><label for="{{form.Cantidad.auto_id}}">Cantidad</label></div>
                     <div class="col-md-3 text-left">
-                        {{form.ProductoId | add_class:"form-control"}}
+                        {{ form.ProductoId | add_class:"form-control" | attr:"disabled:disabled"}}
                     </div>
                 </div>
                 <div class="row form-group justify-content-md-center">
@@ -42,4 +42,19 @@
             </form>
         </div>
     </div>
+{% endblock %}
+
+{% block js %}
+<script>
+    $(document).ready(function(){
+        let producto_id = location.href.split("?")[1];
+
+        if(producto_id.includes('producto_id')){
+            producto_id = producto_id.split('=')[1];
+            $('#{{form.ProductoId.auto_id}}>option[value='+producto_id+']')
+                .attr('selected', true);
+        }
+
+    });
+</script>
 {% endblock %}
