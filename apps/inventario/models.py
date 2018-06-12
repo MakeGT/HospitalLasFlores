@@ -22,13 +22,9 @@ class Productos(models.Model):
 
     def publish(self):
         self.save()
-
+    
     def __str__(self):
-        if self.Unidad == '1':
-            return (self.Nombre + ' (UNIDAD)')
-        else:
-            return (self.Nombre + ' (CAJA DE ) "' + str(self.Cantidad) + '" (UNIDADES)' )
-           # return '%s %s %s' % (self.Nombre, self.Unidad, self.Cantidad)
+        return '{}'.format(self.Nombre)
 
 
 class Proveedores(models.Model):
@@ -42,6 +38,7 @@ class Lotes(models.Model):
     PrecioVenta = models.FloatField()
     ProductoId = models.ForeignKey('Productos', null=False, blank=False, related_name='lotes')
     Cantidad = models.IntegerField(null=True)
+
     def publish(self):
         self.save()
 
