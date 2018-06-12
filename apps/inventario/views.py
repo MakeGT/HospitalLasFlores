@@ -71,6 +71,14 @@ class LoteCreateView(CreateView):
     template_name = 'inventario/lote_create.html'
     success_url = reverse_lazy('listar_lote')
 
+    def get_context_data(self, **kwargs):
+        ctx = super(LoteCreateView, self).get_context_data(**kwargs)
+
+        ctx['producto'] = Productos.objects.get(
+                pk=self.request.GET.get('producto_id')
+            )
+        return ctx
+
 class LoteListView(ListView):
     model = Lotes
     template_name = 'inventario/lote_list.html'
