@@ -26,16 +26,17 @@
                 </div>
             <form action="" method="post" class="">
                 {% csrf_token %}
+                <div class="row form-group justify-content-md-center" visible="false">
+                    <div class="col-md-2 text-right"><label for="{{form.Cantidad.auto_id}}">Producto</label></div>
+                    <div class="col-md-3 text-left">
+                        {{ form.ProductoId | add_class:"form-control d-none"}}
+                        <p class="border rounded mb -0 p-2 bg-light">{{producto.Nombre}}</p>
+                    </div>
+                </div>
                 <div class="row form-group justify-content-md-center">
                     <div class="col-md-2 text-right"><label for="{{form.PrecioVenta.auto_id}}">Precio de Venta</label></div>
                     <div class="col-md-3 text-left">
                         {{form.PrecioVenta | add_class:"form-control"}}
-                    </div>
-                </div>
-                <div class="row form-group justify-content-md-center" visible="false">
-                    <div class="col-md-2 text-right"><label for="{{form.Cantidad.auto_id}}">Cantidad</label></div>
-                    <div class="col-md-3 text-left">
-                        {{ form.ProductoId | add_class:"form-control" }}
                     </div>
                 </div>
                 <div class="row form-group justify-content-md-center">
@@ -46,8 +47,10 @@
                 </div>
                 <div class="row form-group justify-content-md-center">
                         <div class="col-md-5 text-right">
+                            <div class="btn-group">
                             <button type="submit" name="guardar" class="btn btn-outline-success btn-lg"><i class="fa fa-save fa-lg"></i></button>
-                            <a href="{% url 'listar_producto' %}" class="btn btn-outline-danger btn-lg"><b><i class="fa fa-times fa-lg"></i></b></a>
+                            <a href="{% url 'listar_producto' %}" class="btn btn-outline-danger btn-lg"><b><i class="fa fa-times-circle fa-lg"></i></b></a>
+                            </div>    
                         </div>
                     </div>
                 </div>

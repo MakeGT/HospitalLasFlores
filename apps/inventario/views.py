@@ -102,3 +102,13 @@ class LoteUpdateView(UpdateView):
     ]
     template_name = 'inventario/lote_create.html'
     success_url = reverse_lazy('listar_lote')
+
+class PedidosCreateView(CreateView):
+    model = Pedidos
+    fields = [
+        'Monto',
+        'TipoPedido'
+    ]
+    template_name = 'inventario/lote_create.html'
+    success_url = reverse_lazy('listar_producto')
+
