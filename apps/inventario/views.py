@@ -69,7 +69,7 @@ class LoteCreateView(CreateView):
         'Cantidad'
     ]
     template_name = 'inventario/lote_create.html'
-    success_url = reverse_lazy('listar_lote')
+    success_url = reverse_lazy('listar_producto')
 
     def get_context_data(self, **kwargs):
         ctx = super(LoteCreateView, self).get_context_data(**kwargs)
