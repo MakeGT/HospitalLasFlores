@@ -66,7 +66,11 @@ class Pedidos(models.Model): #Pedidos de clientes
     FechaHora = models.DateTimeField(auto_now=True)
     #Llave foranea del usuario que lo realiza
     Monto = models.FloatField()
-    TipoPedido = models.CharField(max_length=1, null=False, blank=False)
+    TiposPedidos = (
+        ('1', 'Interno'),
+        ('2', 'Externo')
+    )
+    TipoPedido = models.CharField(max_length=1, choices=TiposPedidos, null=False, blank=False, default='1')
 
 class DetallePedidos(models.Model): #Pedidos de clientes
     Id = models.AutoField(primary_key=True)

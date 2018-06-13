@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from django.contrib.auth.decorators import login_required
-from .views import ProductoCreateView, ProductoListView, ProductoUpdateView, ProductoDeleteView, ProductoDetailView, LoteListView, LoteDeleteView, LoteUpdateView, LoteCreateView
+from .views import ProductoCreateView, ProductoListView, ProductoUpdateView, ProductoDeleteView, ProductoDetailView, LoteListView, LoteDeleteView, LoteUpdateView, LoteCreateView, PedidosCreateView
 
 # Estas son la urls de casos
 urlpatterns = [
@@ -13,4 +13,5 @@ urlpatterns = [
     url(r'^listarlote/', login_required(LoteListView.as_view()), name='listar_lote'),
     url(r'^eliminarlote/(?P<pk>\d+)/', login_required(LoteDeleteView.as_view()), name='eliminar_lote'),
     url(r'^editarlote/(?P<pk>\d+)/', login_required(LoteUpdateView.as_view()), name='editar_lote'),
-    ]
+    url(r'^crearpedido/', login_required(PedidosCreateView.as_view()), name='agregar_pedido'),
+]
