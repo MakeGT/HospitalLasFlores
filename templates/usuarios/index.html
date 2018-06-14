@@ -1,0 +1,64 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/fontawesome-all.min.css' %}">
+        <meta charset="utf-8">
+        <title>
+          Las Flores
+        </title>
+    </head>
+    
+    <body  {text-align: center}>  
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3" >
+          <a class="navbar-brand" href="#">  <img src={% static "imagen/logo2.jpg" %}  height=50, width=80, hspace=2, align=left></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarColor03" align="right">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+            </ul>
+        </div>
+        </nav>
+        
+        <br>
+        <br>
+
+        <section class="section">
+          <div class="container">
+            <form method="post" autocomplete="off">
+              {% csrf_token %}
+              <div class="row form-group justify-content-md-center">
+                <div class="col-md-8 col-md-offset-2">
+                  <div class="form-group">
+                    <label for="username">Nombre de usuario:</label>
+                    <input class="form-control" type="text" name="username">
+                  </div>
+                </div>
+              </div>
+              <div class="row form-group justify-content-md-center">
+                <div class="col-md-8 col-md-offset-2">
+                  <div class="form-group">
+                    <label for="username">Contraseña:</label>
+                    <input class="form-control" type="password" name="password">
+                  </div>
+                </div>
+              </div>
+              <div class="row form-group justify-content-md-center" style="text-align: right">
+                <div class="col-md-8 col-md-offset-2">
+                  <div class="form-group">
+                    <a class="text-muted" href="{% url 'password_reset' %}">Olvide mi contraseña</a>
+                    <input class="btn btn-outline-success" type="submit" value="Ingresar">
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </section>
+      <script src="{% static 'js/jquery.min.js' %}"></script>
+      <script src="{% static 'js/bootstrap.min.js' %}"></script>
+      <script src="{% static 'js/popper.min.js' %}"></script> 
+  </body>
+</html>

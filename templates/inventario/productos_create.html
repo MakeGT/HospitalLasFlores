@@ -1,0 +1,58 @@
+{% extends 'principal/index.html' %}
+{% load widget_tweaks %}
+{% block title %}
+     Creación de productos
+{% endblock %}
+     
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">
+                Edición de Productos
+            </h4>
+        </div>
+        <div class="card-body">
+            <form action="" method="post" class="">
+                {% csrf_token %}
+                <div class="row form-group justify-content-md-center">
+                    <div class="col-md-2 text-right"><label for="{{form.Codigo.auto_id}}">Código</label></div>
+                    <div class="col-md-3 text-left">
+                        {{form.Codigo | add_class:"form-control"}}
+                    </div>
+                </div>
+                <div class="row form-group justify-content-md-center">
+                    <div class="col-md-2 text-right"><label for="{{form.Nombre.auto_id}}">Nombre</label></div>
+                    <div class="col-md-3 text-left">
+                        {{form.Nombre | add_class:"form-control"}}
+                    </div>
+                </div>
+                <div class="row form-group justify-content-md-center">
+                    <div class="col-md-2 text-right"><label for="{{form.Marca.auto_id}}">Marca</label></div>
+                    <div class="col-md-3 text-left">
+                        {{form.Marca | add_class:"form-control"}}
+                    </div>
+                </div>
+                <div class="row form-group justify-content-md-center">
+                    <div class="col-md-2 text-right"><label for="{{form.Unidad.auto_id}}">Presentación</label></div>
+                    <div class="col-md-3 text-left">
+                        {{form.Unidad | add_class:"form-control"}}
+                    </div>
+                </div>
+                <div class="row form-group justify-content-md-center" >
+                    <div class="col-md-2 text-right"><label for="{{form.Cantidad.auto_id}}">Cantidad</label></div>
+                    <div class="col-md-3 text-left" >
+                        {{form.Cantidad | add_class:"form-control"}}
+                    </div>
+                </div>
+                <div class="row form-group justify-content-md-center">
+                    <div class="col-md-5 text-right">
+                            <div class="btn-group">
+                        <button  type="submit" name="guardar" class="btn btn-outline-success btn-lg"><i class="fa fa-save fa-lg"></i></button>
+                        <a href="{% url 'listar_producto' %}" class="btn btn-outline-danger btn-lg"><b><i class="fa fa-times-circle fa-lg" ></i></b></a>
+                    </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

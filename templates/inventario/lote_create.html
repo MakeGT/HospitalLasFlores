@@ -1,0 +1,88 @@
+{% extends 'principal/index.html' %}
+
+{% load widget_tweaks %}
+{% block title %}
+     Creación de productos
+{% endblock %}
+     
+{% block content %}
+<div>
+    <div class="card" >
+        <div class="card-header">
+            <h4 class="card-title">
+                Edicion de Lotes
+            </h4>
+        </div>
+        <div class="card-body"  style='float: left;'>
+                <div style='float: right;'>
+                        <div class="card border-success mb-3 " style="max-width: 20rem;">
+                                    <div class="card-header"><h5><i class="fa fa-info" ></i> Información del producto</div>
+                                    <div class="card-body">
+                                      <h5 class="card-title"><b>Producto</b></h5>  <h6>{{producto.Nombre}}</h6> 
+                                      <h5 class="card-title"><b>Presentación</b></h5> <h6> {{producto.get_Unidad_display}}</h6> 
+                                      <h5 class="card-title"><b>Unidades</b></h5> <h6>  {{producto.Cantidad}} Unidades</h6>
+                                    </div>
+                        </div>
+                </div>
+            <form action="" method="post" class="">
+                {% csrf_token %}
+                <div class="row form-group justify-content-md-center" visible="false">
+                    <div class="col-md-2 text-right"><label for="{{form.Cantidad.auto_id}}">Producto</label></div>
+                    <div class="col-md-3 text-left">
+                        {{ form.ProductoId | add_class:"form-control d-none"}}
+                        <p class="border rounded mb -0 p-2 bg-light">{{producto.Nombre}}</p>
+                    </div>
+                </div>
+                <div class="row form-group justify-content-md-center">
+                    <div class="col-md-2 text-right"><label for="{{form.PrecioVenta.auto_id}}">Precio de Venta</label></div>
+                    <div class="col-md-3 text-left">
+                        {{form.PrecioVenta | add_class:"form-control"}}
+                    </div>
+                </div>
+                <div class="row form-group justify-content-md-center">
+                    <div class="col-md-2 text-right"><label for="{{form.Cantidad.auto_id}}">Cantidad</label></div>
+                    <div class="col-md-3 text-left">
+                        {{form.Cantidad | add_class:"form-control"}}
+                    </div>
+                </div>
+                <div class="row form-group justify-content-md-center">
+                        <div class="col-md-5 text-right">
+                            <div class="btn-group">
+                            <button type="submit" name="guardar" class="btn btn-outline-success btn-lg"><i class="fa fa-save fa-lg"></i></button>
+                            <a href="{% url 'listar_producto' %}" class="btn btn-outline-danger btn-lg"><b><i class="fa fa-times-circle fa-lg"></i></b></a>
+                            </div>    
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            </form>
+        </div>
+    </div>
+
+    
+
+
+
+
+
+
+
+
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+    $(document).ready(function(){
+        let producto_id = location.href.split("?")[1];
+
+        if(producto_id.includes('producto_id')){
+            producto_id = producto_id.split('=')[1];
+            $('#{{form.ProductoId.auto_id}}>option[value='+producto_id+']')
+                .attr('selected', true);
+        }
+
+    });
+</script>
+{% endblock %}
