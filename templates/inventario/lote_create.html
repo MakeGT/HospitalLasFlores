@@ -20,7 +20,12 @@
                                     <div class="card-body">
                                       <h5 class="card-title"><b>Producto</b></h5>  <h6>{{producto.Nombre}}</h6> 
                                       <h5 class="card-title"><b>Presentación</b></h5> <h6> {{producto.get_Unidad_display}}</h6> 
-                                      <h5 class="card-title"><b>Unidades</b></h5> <h6>  {{producto.Cantidad}} Unidades</h6>
+                                       
+                                      {% if producto.Unidad != '1' %}
+                                        <h5 class="card-title"><b>Unidades</b></h5>
+                                        <h6>{{producto.Cantidad}}</h6>
+                                      
+                                      {% endif %}
                                     </div>
                         </div>
                 </div>
