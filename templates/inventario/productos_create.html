@@ -38,7 +38,7 @@
                         {{form.Unidad | add_class:"form-control"}}
                     </div>
                 </div>
-                <div class="row form-group justify-content-md-center" >
+                <div class="row form-group justify-content-md-center" id="atributo">
                     <div class="col-md-2 text-right"><label for="{{form.Cantidad.auto_id}}">Cantidad</label></div>
                     <div class="col-md-3 text-left" >
                         {{form.Cantidad | add_class:"form-control"}}
@@ -61,4 +61,26 @@
             </form>
         </div>
     </div>
+{% endblock %}
+
+{% block js %}
+<script>
+    
+    $(document).ready(function(){
+        y = $( "#id_Unidad" ).val();
+        if(y === '1'){
+            $('#atributo').hide(y)
+        } 
+        $('#id_Unidad').change(function(){
+            var x = $( "#id_Unidad option:selected" ).text();
+            if(x === 'Unidad'){
+                $('#atributo').hide(x);
+            }else{
+                $('#atributo').show(x);
+            }   
+        });
+        
+        
+    });
+</script>
 {% endblock %}
