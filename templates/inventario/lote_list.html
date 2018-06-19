@@ -19,6 +19,7 @@
           <th scope = "col">PRECIO DE VENTA</th>
           <th scope = "col">PRODUCTO</th>
           <th scope = "col">CANTIDAD</th>
+          <th scope = "col">Existencia</th>
           <th></th>
           <th></th>
         </tr>
@@ -30,6 +31,7 @@
               <td> {{lote.PrecioVenta}} </td>
               <td> {{lote.ProductoId.Nombre}}   </td>
               <td> {{lote.Cantidad}}   </td>
+              <td> {{lote.Existencia}}   </td>
               <td>   
                 <div class="btn-group">
                     <a class="btn btn-outline-info" href="{% url 'editar_lote' lote.Id %}"> <i class="far fa-edit"></i> Editar</a> 
