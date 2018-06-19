@@ -14,6 +14,8 @@ class Productos(models.Model):
     )
     Unidad = models.CharField(max_length=1, choices=Unidades, default='1')
     Cantidad = models.IntegerField(blank=True)
+    Precio = models.FloatField(null=False)
+    
     #Cantidad hace referencia a cúantos elementos contiene, por ejemplo una caja
     
     @property
@@ -38,6 +40,7 @@ class Lotes(models.Model):
     PrecioVenta = models.FloatField()
     ProductoId = models.ForeignKey('Productos', null=False, blank=False, related_name='lotes')
     Cantidad = models.IntegerField(null=True)
+    Existencia = models.IntegerField(null = True)
 
     def publish(self):
         self.save()

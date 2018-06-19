@@ -24,6 +24,7 @@ class ProductoCreateView(CreateView):
         'Marca',
         'Unidad',
         'Cantidad',
+        'Precio',
     ]
     template_name = 'inventario/productos_create.html'
     success_url = reverse_lazy('listar_producto')
@@ -43,7 +44,8 @@ class ProductoUpdateView(UpdateView):
         'Nombre',
         'Marca',
         'Unidad',
-        'Cantidad'
+        'Cantidad',
+        'Precio',
     ]
 
     template_name = 'inventario/productos_create.html'
@@ -66,7 +68,8 @@ class LoteCreateView(CreateView):
     fields = [
         'PrecioVenta',
         'ProductoId',
-        'Cantidad'
+        'Cantidad',
+        'Existencia',
     ]
     template_name = 'inventario/lote_create.html'
     success_url = reverse_lazy('listar_producto')
@@ -98,7 +101,8 @@ class LoteUpdateView(UpdateView):
     fields = [
         'PrecioVenta',
         'ProductoId',
-        'Cantidad'
+        'Cantidad',
+        'Existencia',
     ]
     template_name = 'inventario/lote_create.html'
     success_url = reverse_lazy('listar_lote')
