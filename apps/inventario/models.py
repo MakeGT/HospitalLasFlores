@@ -13,7 +13,7 @@ class Productos(models.Model):
         ('2', 'Caja')
     )
     Unidad = models.CharField(max_length=1, choices=Unidades, default='1')
-    Cantidad = models.IntegerField(blank=True)
+    Cantidad = models.IntegerField(blank=True, null=True)
     Precio = models.FloatField(null=False)
     
     #Cantidad hace referencia a cúantos elementos contiene, por ejemplo una caja
