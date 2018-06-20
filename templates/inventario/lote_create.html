@@ -26,6 +26,7 @@
                                         <h6>{{producto.Cantidad}}</h6>
                                       
                                       {% endif %}
+                                      <h5 class="card-title"><b>Precio</b></h5> <h6 id = 'h6'> {{producto.Precio}} </h6> 
                                     </div>
                         </div>
                 </div>
@@ -55,7 +56,9 @@
                             <div class="btn-group">
                             <button type="submit" name="guardar" class="btn btn-outline-success btn-lg"><i class="fa fa-save fa-lg"></i></button>
                             <a href="{% url 'listar_producto' %}" class="btn btn-outline-danger btn-lg"><b><i class="fa fa-times-circle fa-lg"></i></b></a>
-                            </div>    
+                             
+
+                        </div>    
                         </div>
                     </div>
                 </div>
@@ -88,6 +91,20 @@
                 .attr('selected', true);
         }
 
+    });
+</script>
+<script>
+    $(document).ready(function(){
+        $("#id_PrecioVenta").focusout(function(){
+            var nuevo = parseFloat($(this).val());
+            var anterior = parseFloat($("#h6").text());
+            if(anterior>=nuevo){
+                alert("Se mantendrá el precio actual de " + anterior);
+            }else{
+                alert("Se actualizará el precio a " + nuevo);
+            }
+            
+        });
     });
 </script>
 {% endblock %}

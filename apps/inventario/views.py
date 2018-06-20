@@ -24,6 +24,7 @@ class ProductoCreateView(CreateView):
         'Marca',
         'Unidad',
         'Cantidad',
+        'Precio',
     ]
     template_name = 'inventario/productos_create.html'
     success_url = reverse_lazy('listar_producto')
@@ -43,11 +44,13 @@ class ProductoUpdateView(UpdateView):
         'Nombre',
         'Marca',
         'Unidad',
-        'Cantidad'
+        'Cantidad',
+        'Precio',
     ]
 
     template_name = 'inventario/productos_create.html'
     success_url = reverse_lazy('listar_producto')
+    
 
 class ProductoDeleteView(DeleteView):
     model = Productos
@@ -69,7 +72,7 @@ class LoteCreateView(CreateView):
         'Cantidad'
     ]
     template_name = 'inventario/lote_create.html'
-    success_url = reverse_lazy('listar_producto')
+    success_url = reverse_lazy('editar_producto')
 
     def get_context_data(self, **kwargs):
         ctx = super(LoteCreateView, self).get_context_data(**kwargs)

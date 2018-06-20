@@ -39,12 +39,12 @@
                     </div>
                 </div>
                 <div class="row form-group justify-content-md-center" id="atributo">
-                    <div class="col-md-2 text-right"><label for="{{form.Cantidad.auto_id}}">Cantidad</label></div>
+                    <div class="col-md-2 text-right"><label for="{{form.Cantidad.auto_id}}">Cantidad por caja</label></div>
                     <div class="col-md-3 text-left" >
                         {{form.Cantidad | add_class:"form-control"}}
                     </div>
                 </div>
-                <div class="row form-group justify-content-md-center" >
+                <div class="row form-group justify-content-md-center">
                     <div class="col-md-2 text-right"><label for="{{form.Precio.auto_id}}">Precio</label></div>
                     <div class="col-md-3 text-left">
                         {{form.Precio | add_class:"form-control"}}
@@ -79,8 +79,17 @@
                 $('#atributo').show(x);
             }   
         });
-        
-        
+    });
+</script>
+
+<script>
+    $(document).ready(function(){
+        let precio = location.href.split("?")[1];
+
+        if(precio.includes('precio')){
+            precio = precio.split('=')[1];
+            $('#{{form.ProductoPrecio.auto_id}}>option[value='+precio+']');
+        }
     });
 </script>
 {% endblock %}
