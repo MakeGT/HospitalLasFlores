@@ -20,11 +20,9 @@
                                     <div class="card-body">
                                       <h5 class="card-title"><b>Producto</b></h5>  <h6>{{producto.Nombre}}</h6> 
                                       <h5 class="card-title"><b>Presentación</b></h5> <h6> {{producto.get_Unidad_display}}</h6> 
-                                       
                                       {% if producto.Unidad != '1' %}
                                         <h5 class="card-title"><b>Unidades</b></h5>
                                         <h6>{{producto.Cantidad}}</h6>
-                                      
                                       {% endif %}
                                       <h5 class="card-title"><b>Precio</b></h5> <h6 id = 'h6'> {{producto.Precio}} </h6> 
                                     </div>
@@ -99,8 +97,10 @@
             var nuevo = parseFloat($(this).val());
             var anterior = parseFloat($("#h6").text());
             if(anterior>=nuevo){
+                $('#id_PrecioVenta').val(anterior);
                 alert("Se mantendrá el precio actual de " + anterior);
             }else{
+                
                 alert("Se actualizará el precio a " + nuevo);
             }
             
