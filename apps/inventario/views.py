@@ -14,6 +14,7 @@ from .models import Compras
 from .models import DetalleCompras
 from .models import Pedidos
 from .models import DetallePedidos
+from contextlib import contextmanager
 # Create your views here.
 
 class ProductoCreateView(CreateView):
@@ -72,7 +73,7 @@ class LoteCreateView(CreateView):
         'Cantidad'
     ]
     template_name = 'inventario/lote_create.html'
-    success_url = reverse_lazy('editar_producto')
+    success_url = reverse_lazy('listar_producto')
 
     def get_context_data(self, **kwargs):
         ctx = super(LoteCreateView, self).get_context_data(**kwargs)
@@ -81,6 +82,17 @@ class LoteCreateView(CreateView):
                 pk=self.request.GET.get('producto_id')
             )
         return ctx
+        
+    def form_valid(self, form):
+
+        producto = Productos.objects.get(
+            pk=self.request.GET.get('producto_id')
+        )
+
+        producto.Precio = form.cleaned_data.get('PrecioVenta')
+        producto.save()
+
+        return super(LoteCreateView, self).form_valid(form)
 
 class LoteListView(ListView):
     model = Lotes
