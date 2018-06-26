@@ -70,7 +70,8 @@ class LoteCreateView(CreateView):
     fields = [
         'PrecioVenta',
         'ProductoId',
-        'Cantidad'
+        'Cantidad',
+        'Existencia'
     ]
     template_name = 'inventario/lote_create.html'
     success_url = reverse_lazy('listar_producto')
