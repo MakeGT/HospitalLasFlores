@@ -7,6 +7,8 @@
 {% endblock %}
 
 {% block content %}  
+<div id="div_principal">
+  <div id= "div izq" style='float: left;'>
   <div class="card" style="max-width: 50rem;">
       <div class="card-header">
         <h4 class="card-title">
@@ -21,6 +23,24 @@
               <div class="col-md-3 text-left">
                   {{form.TipoPedido | add_class:"form-control"}}
               </div>
+
+              <div class="col-m">
+              </div>
+              <table class = "table table-hover text-center" id="mytable" style="width:95%">
+                  <thead>
+                  <tr role="row">
+                    <th scope = "col">NOMBRE</th>
+                    <th scope = "col">MARCA</th>
+                    <th scope = "col">PRESENTACIÓN</th>
+                    <th scope = "col">CANTIDAD</th>
+                    <th scope = "col">SOLICITUD</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  </tbody>  
+                </table>
           </div>
           
         </form>
@@ -28,10 +48,10 @@
   </div>
   
   <p>
-      <div class="form-group">
+      <div class="form-group" id="form1">
           <input type="text" class="form-control pull-right" style="width:20%" id="search" placeholder="Buscar"> 
       </div>
-      <table class = "table table-hover text-center" id="mytable">
+      <table class = "table table-hover text-center" id="mytable" style="width:20%">
         <thead>
         <tr role="row">
           <th scope = "col">CÓDIGO</th>
@@ -65,7 +85,20 @@
         </tbody>  
       </table>
   </p>
-  
+</div>
+<div id = "div_derecha" style='float: right;'>
+    <div class="card " style="max-width: 20rem;">
+        <div class="card-header"><h5><i class="fa fa-money-bill fa-lg"></i>Información del Pedido</div>
+        <div class="card-body">
+          <h5 class="card-title"><b>Monto</b></h5>  <h6>{{producto.Nombre}}</h6> 
+          <div class="text-right">
+            <a class="btn btn-outline-success" href=#> <i class="fa fa-clipboard-check fa-lg"></i> Enviar</a>
+          </div>
+        </div>
+</div>
+
+</div>
+</div>
     
 {% endblock %}
 
