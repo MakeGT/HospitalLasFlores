@@ -34,8 +34,7 @@
                     <th scope = "col">PRESENTACIÓN</th>
                     <th scope = "col">CANTIDAD</th>
                     <th scope = "col">SOLICITUD</th>
-                    <th></th>
-                    <th></th>
+                    <th scope = "col">PRECIO </th>
                   </tr>
                   </thead>
                   <tbody>
@@ -51,7 +50,7 @@
       <div class="form-group" id="form1">
           <input type="text" class="form-control pull-right" style="width:20%" id="search" placeholder="Buscar"> 
       </div>
-      <table class = "table table-hover text-center" id="mytable" style="width:20%">
+      <table class = "table table-hover text-center" id="mytable" style="width:100%">
         <thead>
         <tr role="row">
           <th scope = "col">CÓDIGO</th>
@@ -60,8 +59,7 @@
           <th scope = "col">PRESENTACIÓN</th>
           <th scope = "col">CANTIDAD</th>
           <th scope = "col">EXISTENCIA</th>
-          <th></th>
-          <th></th>
+          <th scope = "col">PRECIO </th>
         </tr>
         </thead>
         <tbody>
@@ -74,6 +72,7 @@
               <td> {{producto.get_Unidad_display}}   </td>
               <td> {% if producto.Unidad != '1' %}{{producto.Cantidad}}{% endif %}</td>
               <td> {% if producto.Existencia %}{{producto.Existencia}}{% endif %}   </td>
+              <td> {{ producto.Precio }}   </td>
               <td>   
                 <div class="btn-group">
                     <a class="btn btn-outline-info" href="{% url 'editar_producto' producto.Id %}"> <i class="fa fa-shopping-cart"></i> Agregar</a> 
