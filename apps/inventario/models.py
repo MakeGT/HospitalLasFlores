@@ -48,22 +48,6 @@ class Lotes(models.Model):
     def __str__(self):
         return self.Id
 
-class Compras(models.Model): #Compras a proveedor
-    Id = models.AutoField(primary_key=True)
-    PrecioVenta = models.FloatField()
-    ProductoId = models.ForeignKey('Productos', null=False, blank=False)   
-
-class DetalleCompras(models.Model):
-    Id = models.AutoField(primary_key=True)
-    PrecioVenta = models.FloatField()
-    LoteId = models.ForeignKey('Lotes', null=False, blank=False)   
-    CompraId = models.ForeignKey('Compras', null=False, blank=False)
-    Estados = (
-        ('1', 'Activo'),
-        ('2', 'Inactivo')
-    )
-    Estado = models.CharField(max_length=1, choices=Estados, default='1')
-
 class Pedidos(models.Model): #Pedidos de clientes
     Id = models.AutoField(primary_key=True)
     FechaHora = models.DateTimeField(auto_now=True)
@@ -73,14 +57,14 @@ class Pedidos(models.Model): #Pedidos de clientes
         ('1', 'Interno'),
         ('2', 'Externo')
     )
-    TipoPedido = models.CharField(max_length=1, choices=TiposPedidos, null=False, blank=False, default='1')
+    TipoPedido = models.CharField(max_length=1, choices=TiposPedidos, null=False, blank=False, default='2')
 
 class DetallePedidos(models.Model): #Pedidos de clientes
     Id = models.AutoField(primary_key=True)
-    Cantidad = models.IntegerField
+    Cantidad = models.IntegerField(default=1)
     LoteId = models.ForeignKey('Lotes', null=False, blank=False)  
     PedidoId = models.ForeignKey('Pedidos', null=False, blank=False)  
-    PrecioModificado = models.FloatField()
+    PrecioModificado = models.FloatField(null=True)
     Estados = (
         ('1', 'Activo'),
         ('2', 'Inactivo')
