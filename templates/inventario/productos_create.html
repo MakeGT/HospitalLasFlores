@@ -12,7 +12,7 @@
             </h4>
         </div>
         <div class="card-body">
-            <form action="" method="post" class="">
+            <form action="" method="post" class="" autocomplete="off">
                 {% csrf_token %}
                 <div class="row form-group justify-content-md-center">
                     <div class="col-md-2 text-right"><label for="{{form.Codigo.auto_id}}">Código</label></div>
@@ -53,8 +53,10 @@
                 <div class="row form-group justify-content-md-center">
                     <div class="col-md-5 text-right">
                     <div class="btn-group">
+                        {% if perms.productos.add_producto %}
                         <button  type="submit" name="guardar" class="btn btn-outline-success btn-lg"><i class="fa fa-save fa-lg"></i></button>
                         <a href="{% url 'listar_producto' %}" class="btn btn-outline-danger btn-lg"><b><i class="fa fa-times-circle fa-lg" ></i></b></a>
+                        {% endif %}
                     </div>
                     </div>
                 </div>

@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import permission_required
+from django.utils.decorators import method_decorator
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import (
     ListView,
@@ -29,6 +31,10 @@ class ProductoCreateView(CreateView):
     template_name = 'inventario/productos_create.html'
     success_url = reverse_lazy('listar_producto')
 
+    @method_decorator(permission_required('productos.añadir_producto',reverse_lazy('listar_producto')))
+    def dispatch(self, *args, **kwargs):
+        return super(ProductoCreateView, self).dispatch(*args, **kwargs)
+
 class ProductoListView(ListView):
     model = Productos
     template_name = 'inventario/productos_list.html'
@@ -50,6 +56,10 @@ class ProductoUpdateView(UpdateView):
 
     template_name = 'inventario/productos_create.html'
     success_url = reverse_lazy('listar_producto')
+
+    @method_decorator(permission_required('productos.editar_producto',reverse_lazy('listar_producto')))
+    def dispatch(self, *args, **kwargs):
+        return super(ProductoUpdateView, self).dispatch(*args, **kwargs)
     
 
 class ProductoDeleteView(DeleteView):
@@ -57,6 +67,10 @@ class ProductoDeleteView(DeleteView):
 
     template_name = 'inventario/productos_delete.html'
     success_url = reverse_lazy('listar_producto')
+
+    @method_decorator(permission_required('productos.eliminar_producto',reverse_lazy('listar_producto')))
+    def dispatch(self, *args, **kwargs):
+        return super(ProductoDeleteView, self).dispatch(*args, **kwargs)
 
 class ProductoDetailView(DetailView):
     model = Productos
@@ -69,7 +83,8 @@ class LoteCreateView(CreateView):
     fields = [
         'PrecioVenta',
         'ProductoId',
-        'Cantidad'
+        'Cantidad',
+        'Existencia'
     ]
     template_name = 'inventario/lote_create.html'
     success_url = reverse_lazy('listar_producto')

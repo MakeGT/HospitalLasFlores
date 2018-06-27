@@ -28,7 +28,7 @@
                                     </div>
                         </div>
                 </div>
-            <form action="" method="post" class="">
+            <form action="" method="post" class="" autocomplete="off">
                 {% csrf_token %}
                 <div class="row form-group justify-content-md-center" visible="false">
                     <div class="col-md-2 text-right"><label for="{{form.Cantidad.auto_id}}">Producto</label></div>
@@ -47,6 +47,12 @@
                     <div class="col-md-2 text-right"><label for="{{form.Cantidad.auto_id}}">Cantidad</label></div>
                     <div class="col-md-3 text-left">
                         {{form.Cantidad | add_class:"form-control"}}
+                    </div>
+                </div>
+                <div class="row form-group justify-content-md-center" style="display:none;"> 
+                    <div class="col-md-2 text-right"><label for="{{form.Existencia.auto_id}}">Existencia</label></div>
+                    <div class="col-md-3 text-left">
+                        {{form.Existencia | add_class:"form-control"}}
                     </div>
                 </div>
                 <div class="row form-group justify-content-md-center">
@@ -88,7 +94,10 @@
             $('#{{form.ProductoId.auto_id}}>option[value='+producto_id+']')
                 .attr('selected', true);
         }
-
+        
+        $("button").click(function(){
+            $('#id_Existencia').val($('#id_Cantidad').val());
+        });
     });
 </script>
 <script>
@@ -96,6 +105,7 @@
         $("#id_PrecioVenta").focusout(function(){
             var nuevo = parseFloat($(this).val());
             var anterior = parseFloat($("#h6").text());
+            
             if(anterior>=nuevo){
                 $('#id_PrecioVenta').val(anterior);
                 alert("Se mantendrá el precio actual de " + anterior);
