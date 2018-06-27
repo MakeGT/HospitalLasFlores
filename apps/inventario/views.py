@@ -10,8 +10,7 @@ from django.views.generic import (
 from .models import Productos
 from .models import Proveedores
 from .models import Lotes
-from .models import Compras
-from .models import DetalleCompras
+
 from .models import Pedidos
 from .models import DetallePedidos
 from contextlib import contextmanager
@@ -126,7 +125,7 @@ class PedidosCreateView(CreateView):
     ]
     template_name = 'inventario/pedido_create.html'
     success_url = reverse_lazy('listar_producto')
-
+    #Contexto de productos
     def get_context_data(self, **kwargs):
         ctx = super(PedidosCreateView, self).get_context_data(**kwargs)
 
@@ -134,3 +133,4 @@ class PedidosCreateView(CreateView):
            
         return ctx
 
+  
