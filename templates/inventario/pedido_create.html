@@ -8,8 +8,8 @@
 
 {% block content %}  
 <div id="div_principal">
-  <div id= "div izq" style='float: left;'>
-  <div class="card" style="max-width: 50rem;">
+  <div id= "div izq" style='float: center;'>
+  <div class="card" style="max-width: 100%; float: center;">
       <div class="card-header">
         <h4 class="card-title">
           Creación de pedido
@@ -18,15 +18,35 @@
       <div class="card-body">
         <form action="" method="post" class="">
           {% csrf_token %}
-          <div class="row form-group justify-content-md-center">
+          <div class="row form-group justify-content-md-center" >
               <div class="col-md-2 text-right"><label for="{{form.Cantidad.auto_id}}">Tipo pedido</label></div>
-              <div class="col-md-3 text-left">
+              <div class="col-md-3 text-left" style="float: left;">
                   {{form.TipoPedido | add_class:"form-control"}}
-              </div>
+
+                </div>
+                
+                <div id = "div_derecha" style='float: right;'>
+                    <div class="card " style="max-width: 50rem; max-height: 10rem;">
+                        <div class="card-header"><h5><i class="fa fa-money-bill fa-lg"></i>Información del Pedido</div>
+                        <div class="card-body">
+                          <h5 class="card-title"><b>Monto</b></h5>  <h6>{{producto.Nombre}}</h6> 
+                          <div class="text-right"></div>
+                            <a class="btn btn-outline-success" href=#> <i class="fa fa-clipboard-check fa-lg"></i> Enviar</a>
+                          </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+          </div>
 
               <div class="col-m">
-              </div>
-              <table class = "table table-hover text-center" id="mytable" style="width:95%">
+              
+              
+              <table class = "table table-hover text-center" id="mytable" style="width:100%">
                   <thead>
                   <tr role="row">
                     <th scope = "col">NOMBRE</th>
@@ -39,65 +59,66 @@
                   </thead>
                   <tbody>
                   </tbody>  
-                </table>
+              </table>
+                
+              
+
+                <div class="card">
+                    <p>
+                    <table class = "table table-hover text-center" id="mytable" style="width:100%">
+                        <div class="form-group" id="form1">
+                            <input type="text" class="form-control pull-right" style="width:20%" id="search" placeholder="Buscar"> 
+                        </div>
+                      <thead>
+                      <tr role="row">
+                        <th scope = "col">CÓDIGO</th>
+                        <th scope = "col">NOMBRE</th>
+                        <th scope = "col">MARCA</th>
+                        <th scope = "col">PRESENTACIÓN</th>
+                        <th scope = "col">CANTIDAD</th>
+                        <th scope = "col">EXISTENCIA</th>
+                        <th scope = "col">PRECIO </th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                    {% for producto in productos %}
+                      
+                        <tr class="text-center">
+                            <td> {{producto.Codigo}} </td>
+                            <td> {{producto.Nombre}}   </td>
+                            <td> {{producto.Marca}}   </td>
+                            <td> {{producto.get_Unidad_display}}   </td>
+                            <td> {% if producto.Unidad != '1' %}{{producto.Cantidad}}{% endif %}</td>
+                            <td> {% if producto.Existencia %}{{producto.Existencia}}{% endif %}   </td>
+                            <td> {{ producto.Precio }}   </td>
+                            <td>   
+                              <div class="btn-group">
+                                  <a class="btn btn-outline-info" href="{% url 'editar_producto' producto.Id %}"> <i class="fa fa-shopping-cart"></i> Agregar</a> 
+                              </div>
+                              </td>
+                        </tr>
+                    {% endfor %}
+                      </tbody>  
+                    </table>
+                </p>
+              </div>
+                
+     
           </div>
+        
           
         </form>
-      </div>    
+
+        
+
+
+      </div>   
+      
+      
+      
   </div>
   
-  <p>
-      <div class="form-group" id="form1">
-          <input type="text" class="form-control pull-right" style="width:20%" id="search" placeholder="Buscar"> 
-      </div>
-      <table class = "table table-hover text-center" id="mytable" style="width:100%">
-        <thead>
-        <tr role="row">
-          <th scope = "col">CÓDIGO</th>
-          <th scope = "col">NOMBRE</th>
-          <th scope = "col">MARCA</th>
-          <th scope = "col">PRESENTACIÓN</th>
-          <th scope = "col">CANTIDAD</th>
-          <th scope = "col">EXISTENCIA</th>
-          <th scope = "col">PRECIO </th>
-        </tr>
-        </thead>
-        <tbody>
-      {% for producto in productos %}
-        
-          <tr class="text-center">
-              <td> {{producto.Codigo}} </td>
-              <td> {{producto.Nombre}}   </td>
-              <td> {{producto.Marca}}   </td>
-              <td> {{producto.get_Unidad_display}}   </td>
-              <td> {% if producto.Unidad != '1' %}{{producto.Cantidad}}{% endif %}</td>
-              <td> {% if producto.Existencia %}{{producto.Existencia}}{% endif %}   </td>
-              <td> {{ producto.Precio }}   </td>
-              <td>   
-                <div class="btn-group">
-                    <a class="btn btn-outline-info" href="{% url 'editar_producto' producto.Id %}"> <i class="fa fa-shopping-cart"></i> Agregar</a> 
-                </div>
-                </td>
-          </tr>
-        
-      {% endfor %}
-        </tbody>  
-      </table>
-  </p>
-</div>
-<div id = "div_derecha" style='float: right;'>
-    <div class="card " style="max-width: 20rem;">
-        <div class="card-header"><h5><i class="fa fa-money-bill fa-lg"></i>Información del Pedido</div>
-        <div class="card-body">
-          <h5 class="card-title"><b>Monto</b></h5>  <h6>{{producto.Nombre}}</h6> 
-          <div class="text-right">
-            <a class="btn btn-outline-success" href=#> <i class="fa fa-clipboard-check fa-lg"></i> Enviar</a>
-          </div>
-        </div>
-</div>
-
-</div>
-</div>
+ 
     
 {% endblock %}
 

@@ -41,7 +41,7 @@ class Lotes(models.Model):
     ProductoId = models.ForeignKey('Productos', null=False, blank=False, related_name='lotes')
     Cantidad = models.IntegerField(null=True)
     Existencia = models.IntegerField(null = True)
-
+    FechaIngreso = models.DateField(auto_now=True)
     def publish(self):
         self.save()
 
@@ -63,7 +63,7 @@ class DetallePedidos(models.Model): #Pedidos de clientes
     Id = models.AutoField(primary_key=True)
     Cantidad = models.IntegerField(default=1)
     LoteId = models.ForeignKey('Lotes', null=False, blank=False)  
-    PedidoId = models.ForeignKey('Pedidos', null=False, blank=False)  
+    PedidoId = models.ForeignKey('Pedidos', null=True, blank=True)  
     PrecioModificado = models.FloatField(null=True)
     Estados = (
         ('1', 'Activo'),

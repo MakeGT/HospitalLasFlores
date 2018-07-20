@@ -10,7 +10,6 @@ from django.views.generic import (
 from .models import Productos
 from .models import Proveedores
 from .models import Lotes
-
 from .models import Pedidos
 from .models import DetallePedidos
 from contextlib import contextmanager
@@ -133,4 +132,18 @@ class PedidosCreateView(CreateView):
            
         return ctx
 
-  
+class DetalleCreateView(CreateView):
+    model = DetallePedidos
+    fiels = [
+        'Cantidad',
+        'LoteId',
+        'PrecioModificado'
+    ]
+    template_name = 'inventario/detalle_create.html'
+    success_url = reverse_lazy('listar_producto')
+    #Contexto de lotes
+    def get_context_data(self, **kwards):
+        ctx = super(DetalleCreateView, self).get_context_data(**kwargs)
+        ctx['lotes'] = Lotes.objects.all()
+        return ctx 
+        
