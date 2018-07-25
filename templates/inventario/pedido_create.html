@@ -9,7 +9,7 @@
 {% block content %}  
 <div id="div_principal">
   <div id= "div izq" style='float: center;'>
-  <div class="card" style="max-width: 100%; float: center;">
+  <div class="card" style="max-width: 100%; float: center; max-height: 16rem;">
       <div class="card-header">
         <h4 class="card-title">
           Creación de pedido
@@ -55,6 +55,7 @@
                     <th scope = "col">CANTIDAD</th>
                     <th scope = "col">SOLICITUD</th>
                     <th scope = "col">PRECIO </th>
+                    <th scope = "col"> </th>
                   </tr>
                   </thead>
                   <tbody>
@@ -65,9 +66,9 @@
 
                 <div class="card">
                     <p>
-                    <table class = "table table-hover text-center" id="mytable" style="width:100%">
+                    <table class = "table table-hover text-center" id="tabla" style="width:100%">
                         <div class="form-group" id="form1">
-                            <input type="text" class="form-control pull-right" style="width:20%" id="search" placeholder="Buscar"> 
+                            <input type="text" class="form-control pull-right" style="width:20%" id="search" placeholder="Buscar producto"> 
                         </div>
                       <thead>
                       <tr role="row">
@@ -93,7 +94,7 @@
                             <td> {{ producto.Precio }}   </td>
                             <td>   
                               <div class="btn-group">
-                                  <a class="btn btn-outline-info" href="{% url 'editar_producto' producto.Id %}"> <i class="fa fa-shopping-cart"></i> Agregar</a> 
+                                  <button class="btn btn-outline-info" id="AgregarBoton" onclick="funcionAgregarProducto()" href="{% url 'editar_producto' producto.Id %}"> <i class="fa fa-shopping-cart"></i> Agregar</button> 
                               </div>
                               </td>
                         </tr>
@@ -126,5 +127,22 @@
     <script src="{% static 'js/search.js' %}"></script>  
 {% endblock %}
 
+{% block js %}
+<script>
+    function funcionValidarCantidad(){
+       var cantidad= prompt("Cantidad", "1");
+       
+       while (isNaN(cantidad)){
+         cantidad=prompt("Por favor ingrese una cantidad válida", "1");
+       }
+    }
+    function funcionAgregarProducto(){
+      funcionValidarCantidad();
+      var fila = '<tr><td></td></tr>';
+      $('#mytable').append(fila);
+    }
+    
+</script>
+{% endblock %}
 
 
