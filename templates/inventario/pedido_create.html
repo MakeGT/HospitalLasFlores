@@ -6,7 +6,7 @@
   Creación de pedidos
 {% endblock %}
 
-{% block content %}  
+{% block content %} 
 <div id="div_principal">
   <div id= "div izq" style='float: center;'>
   <div class="card" style="max-width: 100%; float: center; max-height: 16rem;">
@@ -49,12 +49,12 @@
               <table class = "table table-hover text-center" id="mytable" style="width:100%">
                   <thead>
                   <tr role="row">
-                    <th scope = "col">NOMBRE</th>
-                    <th scope = "col">MARCA</th>
-                    <th scope = "col">PRESENTACIÓN</th>
-                    <th scope = "col">CANTIDAD</th>
-                    <th scope = "col">SOLICITUD</th>
-                    <th scope = "col">PRECIO </th>
+                    <th scope = "col" id="nombre">NOMBRE</th>
+                    <th scope = "col" id ="marca>">MARCA</th>
+                    <th scope = "col" id = "presentacion">PRESENTACIÓN</th>
+                    <th scope = "col" id = "cantidad">CANTIDAD</th>
+                    <th scope = "col" id = "solicitud">SOLICITUD</th>
+                    <th scope = "col" id = "precio">PRECIO </th>
                     <th scope = "col"> </th>
                   </tr>
                   </thead>
@@ -72,8 +72,8 @@
                         </div>
                       <thead>
                       <tr role="row">
-                        <th scope = "col">CÓDIGO</th>
-                        <th scope = "col">NOMBRE</th>
+                        <th scope = "col" id ="codigo">CÓDIGO</th>
+                        <th scope = "col" id = "nombre">NOMBRE</th>
                         <th scope = "col">MARCA</th>
                         <th scope = "col">PRESENTACIÓN</th>
                         <th scope = "col">CANTIDAD</th>
@@ -92,7 +92,8 @@
                             <td> {% if producto.Unidad != '1' %}{{producto.Cantidad}}{% endif %}</td>
                             <td> {% if producto.Existencia %}{{producto.Existencia}}{% endif %}   </td>
                             <td> {{ producto.Precio }}   </td>
-                            <td>   
+                            <td id="id{{producto.Id}}">{{producto.Id}}</td>
+                            <td> 
                               <div class="btn-group">
                                   <button class="btn btn-outline-info" id="AgregarBoton" onclick="funcionAgregarProducto()" href="{% url 'editar_producto' producto.Id %}"> <i class="fa fa-shopping-cart"></i> Agregar</button> 
                               </div>
@@ -118,8 +119,6 @@
       
       
   </div>
-  
- 
     
 {% endblock %}
 
@@ -138,8 +137,19 @@
     }
     function funcionAgregarProducto(){
       funcionValidarCantidad();
+      $("#tabla tr td").click(agregar);
+
+    }
+    function agregar(){
+      var x = $(this).parent("tr").find("#id");
+      x.css("background-color", "red");
+      alert(x.text);      
       var fila = '<tr><td></td></tr>';
       $('#mytable').append(fila);
+      filas = filas + fila
+
+
+
     }
     
 </script>
