@@ -92,7 +92,6 @@
                             <td> {% if producto.Unidad != '1' %}{{producto.Cantidad}}{% endif %}</td>
                             <td> {% if producto.Existencia %}{{producto.Existencia}}{% endif %}   </td>
                             <td> {{ producto.Precio }}   </td>
-                            <td id="id{{producto.Id}}">{{producto.Id}}</td>
                             <td> 
                               <div class="btn-group">
                                   <button class="btn btn-outline-info" id="AgregarBoton" onclick="funcionAgregarProducto({{producto.Id}})" href="{% url 'editar_producto' producto.Id %}"> <i class="fa fa-shopping-cart"></i> Agregar</button> 
@@ -128,6 +127,8 @@
 
 {% block js %}
 <script>
+  var lista = new Array();
+  $(document).ready()
     function funcionValidarCantidad(){
        var cantidad= prompt("Cantidad", "1");
        
@@ -138,8 +139,11 @@
     function funcionAgregarProducto(identificador){
       alert(identificador);
       funcionValidarCantidad();
+      lista.unshift(identificador);
+      lista.unshift('2');
+      alert(lista);
     }
-    
+  
 </script>
 {% endblock %}
 
